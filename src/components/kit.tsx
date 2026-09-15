@@ -51,7 +51,7 @@ export function Stat({
 }: {
   label: string;
   value: string;
-  hint?: string;
+  hint?: string | undefined;
   tone?: "ink" | "amber" | "danger" | "good" | "signal";
   large?: boolean;
 }) {
@@ -156,7 +156,7 @@ export function Field({
   children,
 }: {
   label: string;
-  hint?: string;
+  hint?: string | undefined;
   children: ReactNode;
 }) {
   return (
