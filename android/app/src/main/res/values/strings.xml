@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Shoes Store Management</string>
+    <string name="title_activity_main">Shoes Store Management</string>
+    <string name="package_name">com.shoesstore.management</string>
+    <string name="custom_url_scheme">com.shoesstore.management</string>
+</resources>
