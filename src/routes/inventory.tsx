@@ -74,7 +74,7 @@ function InventoryPage() {
   function submit() {
     if (!sheetProduct) return;
     const qty = Number(form.qty);
-    if (!qty || Number.isNaN(qty)) return toast.error("Enter a quantity");
+    if (!qty || Number.isNaN(qty)) { toast.error("Enter a quantity"); return; }
     if (form.mode === "in") {
       app.stockIn(sheetProduct.id, form.size, form.color, Math.abs(qty));
       toast.success(`Added ${Math.abs(qty)} to ${sheetProduct.name}`);
