@@ -165,7 +165,7 @@ export function useApp() {
       getCustomer: (id?: string) =>
         id ? data.customers.find((c) => c.id === id) : undefined,
 
-      saveProduct(input: Omit<Product, "id" | "createdAt" | "updatedAt"> & { id?: string }) {
+      saveProduct(input: Omit<Product, "id" | "createdAt" | "updatedAt"> & { id?: string | undefined }) {
         update((d) => {
           if (input.id) {
             const updated: Product = {
@@ -210,8 +210,8 @@ export function useApp() {
       recordSale(sale: {
         items: SaleItem[];
         paymentMethod: Sale["paymentMethod"];
-        customerId?: string;
-        notes?: string;
+        customerId?: string | undefined;
+        notes?: string | undefined;
       }) {
         const total = sale.items.reduce((s, i) => s + i.subtotal, 0);
         update((d) => {
@@ -258,7 +258,7 @@ export function useApp() {
         });
       },
 
-      saveCustomer(input: Omit<Customer, "id" | "createdAt"> & { id?: string }) {
+      saveCustomer(input: Omit<Customer, "id" | "createdAt"> & { id?: string | undefined }) {
         update((d) =>
           input.id
             ? {
@@ -281,7 +281,7 @@ export function useApp() {
         update((d) => ({ ...d, customers: d.customers.filter((c) => c.id !== id) }));
       },
 
-      saveExpense(input: Omit<Expense, "id"> & { id?: string }) {
+      saveExpense(input: Omit<Expense, "id"> & { id?: string | undefined }) {
         update((d) =>
           input.id
             ? {
