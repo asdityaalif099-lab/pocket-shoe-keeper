@@ -37,8 +37,8 @@ export type Product = {
   colors: string[];
   sizes: string[];
   minimumStock: number;
-  image?: string;
-  notes?: string;
+  image?: string | undefined;
+  notes?: string | undefined;
   createdAt: string;
   updatedAt: string;
 };
@@ -69,16 +69,16 @@ export type Sale = {
   items: SaleItem[];
   total: number;
   paymentMethod: PaymentMethod;
-  customerId?: string;
-  notes?: string;
+  customerId?: string | undefined;
+  notes?: string | undefined;
   createdAt: string;
 };
 
 export type Customer = {
   id: string;
   name: string;
-  phone?: string;
-  notes?: string;
+  phone?: string | undefined;
+  notes?: string | undefined;
   createdAt: string;
 };
 
@@ -88,7 +88,7 @@ export type Expense = {
   category: ExpenseCategory;
   amount: number;
   date: string;
-  notes?: string;
+  notes?: string | undefined;
 };
 
 export type Settings = {

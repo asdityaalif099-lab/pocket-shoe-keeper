@@ -119,12 +119,12 @@ function ProductsPage() {
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
-    if (!form.name.trim()) return toast.error("Product name is required");
-    if (!sizes.length) return toast.error("Add at least one size");
-    if (!colors.length) return toast.error("Add at least one color");
+    if (!form.name.trim()) { toast.error("Product name is required"); return; }
+    if (!sizes.length) { toast.error("Add at least one size"); return; }
+    if (!colors.length) { toast.error("Add at least one color"); return; }
     const selling = Number(form.sellingPrice) || 0;
     const purchase = Number(form.purchasePrice) || 0;
-    if (selling <= 0) return toast.error("Selling price must be greater than zero");
+    if (selling <= 0) { toast.error("Selling price must be greater than zero"); return; }
 
     app.saveProduct({
       id: form.id,

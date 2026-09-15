@@ -66,13 +66,13 @@ function SalesPage() {
   function addToCart() {
     if (!pickerProduct || !picker) return;
     const qty = Number(picker.qty) || 0;
-    if (qty <= 0) return toast.error("Quantity must be at least 1");
+    if (qty <= 0) { toast.error("Quantity must be at least 1"); return; }
     const available = app.getQty(pickerProduct.id, picker.size, picker.color);
     const already = cart
       .filter((i) => i.productId === pickerProduct.id && i.size === picker.size && i.color === picker.color)
       .reduce((s, i) => s + i.quantity, 0);
     if (qty + already > available) {
-      return toast.error(`Only ${available - already} left for ${picker.size} / ${picker.color}`);
+      { toast.error(`Only ${available - already} left for ${picker.size} / ${picker.color}`); return; }
     }
     setCart((c) => [
       ...c,
@@ -92,7 +92,7 @@ function SalesPage() {
   }
 
   function checkout() {
-    if (!cart.length) return toast.error("Add at least one item");
+    if (!cart.length) { toast.error("Add at least one item"); return; }
     app.recordSale({
       items: cart,
       paymentMethod: payment,
