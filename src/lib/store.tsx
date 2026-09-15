@@ -138,9 +138,10 @@ export function useApp() {
         ];
       }
       const next = [...d.inventory];
+      const current = next[idx] as InventoryItem;
       next[idx] = {
-        ...next[idx],
-        quantity: Math.max(0, next[idx].quantity + change),
+        ...current,
+        quantity: Math.max(0, current.quantity + change),
         updatedAt: stamp(),
       };
       return next;
